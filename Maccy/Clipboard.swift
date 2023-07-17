@@ -205,6 +205,10 @@ class Clipboard {
     return types.isDisjoint(with: enabledTypes) ||
       !types.isDisjoint(with: ignoredTypes)
   }
+  /// if the pasteboard contains any of the RegExp in the array -> return true
+  private func shouldIgnore(_ ignoreRegExp: [String]) -> Bool {
+   return false
+  }
 
   private func shouldIgnore(_ sourceAppBundle: String) -> Bool {
     if UserDefaults.standard.ignoreAllAppsExceptListed {

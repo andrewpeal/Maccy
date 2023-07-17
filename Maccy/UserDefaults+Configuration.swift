@@ -14,6 +14,7 @@ extension UserDefaults {
     static let ignoreAllAppsExceptListed = "ignoreAllAppsExceptListed"
     static let ignoredApps = "ignoredApps"
     static let ignoredPasteboardTypes = "ignoredPasteboardTypes"
+    static let ignoreRegExp = "ignoreRegExp"
     static let imageMaxHeight = "imageMaxHeight"
     static let lastReviewRequestedAt = "lastReviewRequestedAt"
     static let maxMenuItems = "maxMenuItems"
@@ -47,6 +48,7 @@ extension UserDefaults {
   public struct Values {
     static let ignoredApps: [String] = []
     static let ignoredPasteboardTypes: [String] = []
+    static let ignoreRegExp : [String] = []
     static let imageMaxHeight = 40.0
     static let maxMenuItems = 0
     static let maxMenuItemLength = 50
@@ -123,6 +125,11 @@ extension UserDefaults {
     get { Set(array(forKey: Keys.ignoredPasteboardTypes) as? [String] ?? Values.ignoredPasteboardTypes) }
     set { set(Array(newValue), forKey: Keys.ignoredPasteboardTypes) }
   }
+    
+    public var ignoreRegExp : [String] {
+        get { array(forKey: Keys.ignoreRegExp) as? [String] ?? Values.ignoreRegExp }
+        set { set(newValue, forKey: Keys.ignoreRegExp)}
+    }
 
   @objc dynamic public var imageMaxHeight: Int {
     get { integer(forKey: Keys.imageMaxHeight) }
